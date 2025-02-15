@@ -4,7 +4,7 @@ metadata:
   name: your-ip
   namespace: flux-system
 spec:
-  image: ibnuislamy/your_ip
+  image: dzikrihuda/your_ip
   interval: 30s
   secretRef:
     name: dockerhub-key
