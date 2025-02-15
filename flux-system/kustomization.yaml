@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
 - gotk-components.yaml
 - gotk-sync.yaml
-- dfgjkt-releases
+- dfgjkt-releases.yaml
