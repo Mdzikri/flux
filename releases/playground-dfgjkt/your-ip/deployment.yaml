@@ -1,7 +1,7 @@
 apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImageRepository
 metadata:
-  name: your-ip
+  name: example-apps
   namespace: flux-system
 spec:
   image: dzikrihuda/example-apps
@@ -12,11 +12,11 @@ spec:
 apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImagePolicy
 metadata:
-  name: your-ip
+  name: example-apps
   namespace: flux-system
 spec:
   imageRepositoryRef:
-    name: your-ip
+    name: example-apps
   policy:
     semver:
       range: '>=0.0.1'
@@ -28,7 +28,7 @@ metadata:
   namespace: playground-dfgjkt
 type: Opaque
 stringData:
-  APP_NAME: "your_ip"
+  APP_NAME: "example-apps"
   ENV: "production"
   PORT: "3000"
 ---
@@ -38,21 +38,21 @@ metadata:
   name: your-ip
   namespace: playground-dfgjkt
   labels:
-    app: your-ip
+    app: example-apps
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: your-ip
+      app: example-apps
   template:
     metadata:
       labels:
-        app: your-ip
+        app: example-apps
     spec:
       imagePullSecrets:
         - name: dockerhub-key
       containers:
-        - name: your-ip
+        - name: example-apps
           image: dzikrihuda/example-apps:1.1.0 # {"$imagepolicy": "flux-system:your-ip"}
           ports:
             - containerPort: 3000
@@ -63,10 +63,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: your-ip
+  name: example-apps
   namespace: playground-dfgjkt
   labels:
-    app: your-ip
+    app: example-apps
 spec:
   type: ClusterIP
   ports:
@@ -75,12 +75,12 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app: your-ip
+    app: example-apps
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: your-ip
+  name: example-apps
   namespace: playground-dfgjkt
 spec:
   rules:
