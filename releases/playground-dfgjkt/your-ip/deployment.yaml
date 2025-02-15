@@ -56,7 +56,7 @@ spec:
         - name: dockerhub-key
       containers:
         - name: your-ip
-          image: ibnuislamy/your_ip:1.0.2 # {"$imagepolicy": "flux-system:your-ip"}
+          image: dzikrihuda/your_ip:1.0.2 # {"$imagepolicy": "flux-system:your-ip"}
           ports:
             - containerPort: 3000
           envFrom:
